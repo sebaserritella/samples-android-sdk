@@ -24,6 +24,10 @@ public class PlayerActivity extends AppCompatActivity {
         setTheme(R.style.TheoTheme_Base);
         super.onCreate(savedInstanceState);
 
+        String LIVE = "https://chromecast.cvattv.com.ar/live/live/PX_Sports/SA_Live_dash_enc_2A/PX_Sports.mpd";
+        String licenseServer = "https://wv-client.cvattv.com.ar?deviceId=MGRiYzcwZDgtMmU2Yy0zNThjLTlhNzYtNmNhNjYxOTZkYjQ3";
+        String vrStream = "https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd";
+
         // Inflating view and obtaining an instance of the binding class.
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_player);
 
