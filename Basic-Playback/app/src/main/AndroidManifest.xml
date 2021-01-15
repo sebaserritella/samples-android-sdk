@@ -15,7 +15,7 @@
         android:theme="@style/TheoTheme.Base">
 
         <activity
-            android:name=".PlayerActivity"
+            android:name=".PlayerActivityKT"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/TheoTheme.SplashScreen">

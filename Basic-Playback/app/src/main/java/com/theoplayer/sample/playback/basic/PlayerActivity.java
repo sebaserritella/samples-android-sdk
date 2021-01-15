@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import com.theoplayer.android.api.event.player.PlayerEventTypes;
 import com.theoplayer.android.api.player.Player;
 import com.theoplayer.android.api.source.SourceDescription;
+import com.theoplayer.android.api.source.SourceType;
 import com.theoplayer.android.api.source.TypedSource;
 import com.theoplayer.sample.playback.basic.databinding.ActivityPlayerBinding;
 
@@ -24,15 +25,13 @@ public class PlayerActivity extends AppCompatActivity {
         setTheme(R.style.TheoTheme_Base);
         super.onCreate(savedInstanceState);
 
-        String LIVE = "https://chromecast.cvattv.com.ar/live/live/PX_Sports/SA_Live_dash_enc_2A/PX_Sports.mpd";
-        String licenseServer = "https://wv-client.cvattv.com.ar?deviceId=MGRiYzcwZDgtMmU2Yy0zNThjLTlhNzYtNmNhNjYxOTZkYjQ3";
-        String vrStream = "https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd";
 
         // Inflating view and obtaining an instance of the binding class.
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_player);
 
         // Gathering THEO objects references.
         theoPlayer = viewBinding.theoPlayerView.getPlayer();
+        theoPlayer.getAudioTracks();
 
         // Configuring action bar.
         setSupportActionBar(viewBinding.toolbarLayout.toolbar);
@@ -47,9 +46,15 @@ public class PlayerActivity extends AppCompatActivity {
         // and will also exit fullscreen when the device is rotated back to portrait.
         viewBinding.theoPlayerView.getSettings().setFullScreenOrientationCoupled(true);
 
+        String LIVE = "http://chromecast.cvattv.com.ar/live/c3eds/FoxSports/SA_Live_dash_enc/FoxSports.mpd";
+        String Live2 = "http://chromecast.cvattv.com.ar/live/c3eds/TelefeHD/SA_Live_dash_enc/TelefeHD.mpd";
+        String licenseServer = "https://wv-client.cvattv.com.ar/?deviceId=NjliMjhiZDQwMmJiMTlhY2NiYmI5NmU2NGQyZmVkNmQ=";
+        String vrStream = "https://bitmovin-a.akamaihd.net/content/playhouse-vr/mpds/105560.mpd";
+
         // Creating a TypedSource builder that defines the location of a single stream source.
-        TypedSource.Builder typedSource = TypedSource.Builder
-                .typedSource(getString(R.string.defaultSourceUrl));
+        //TypedSource.Builder typedSource = TypedSource.Builder.typedSource(getString(R.string.defaultSourceUrl));
+
+        TypedSource.Builder typedSource = TypedSource.Builder.typedSource(Live2).type(SourceType.DASH);
 
         // Creating a SourceDescription builder that contains the settings to be applied as a new
         // THEOplayer source.
